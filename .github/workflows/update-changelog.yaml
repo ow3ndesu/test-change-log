@@ -1,0 +1,28 @@
+name: Update Changelog
+
+on:
+  push:
+    branches:
+      - main  # or change to your default branch
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run changelog script
+        run: ./generate-changelog.sh
+
+      - name: Commit and push changelog
+        run: |
+          git add CHANGELOG.md
+          git commit -m "chore: update changelog [skip ci]" || echo "No changes to commit"
+          git push
