@@ -3,7 +3,7 @@ name: Update Changelog
 on:
   push:
     branches:
-      - main  # or change to your default branch
+      - development-stage  # or change to your default branch
 
 jobs:
   changelog:
