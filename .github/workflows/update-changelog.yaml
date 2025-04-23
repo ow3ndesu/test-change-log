@@ -18,6 +18,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Make changelog script executable
+        run: chmod +x generate-changelog.sh
+
       - name: Run changelog script
         run: ./generate-changelog.sh
 
